@@ -1,10 +1,14 @@
 <CommunityApplications>
   <Profile>
-tofa is a media server for your movies and shows, built for people who own their library.
+**tofa is a media server for your movies and shows, built for people who own their library.**
 
-One container runs everything: the server, its own database, automatic backups, and its own video engine for hardware transcoding. Point it at your media, claim the server with your tofa account, and watch on the web, Apple TV, iPhone, iPad, Android TV, and Windows.
+One container runs everything: the server, its own database, automatic backups, and its own video engine for hardware transcoding.
 
-This repository holds the Community Applications template for the tofa media server. Support and documentation live at https://tofa.tv.
+- **Point it at your media** and claim the server with your tofa account.
+- **Watch anywhere** on the web, Apple TV, iPhone, iPad, Android TV, and Windows.
+- **Runs alongside what you already have** on port 33333.
+
+tofa is in beta. Sign up at [tofa.tv](https://tofa.tv).
   </Profile>
   <Icon>https://raw.githubusercontent.com/tofatv/unraid-templates/main/icon.png</Icon>
   <WebPage>https://tofa.tv/</WebPage>
