@@ -9,6 +9,7 @@
 
   <Support>https://accounts.tofa.tv/support</Support>
   <Project>https://tofa.tv/</Project>
+  <GitHub>https://github.com/tofatv/unraid-templates</GitHub>
   <TemplateURL>https://raw.githubusercontent.com/tofatv/unraid-templates/main/templates/tofa.xml</TemplateURL>
   <ReadMe>https://raw.githubusercontent.com/tofatv/unraid-templates/main/README.md</ReadMe>
   <Icon>https://raw.githubusercontent.com/tofatv/unraid-templates/main/icon.png</Icon>
