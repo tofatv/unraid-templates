@@ -86,8 +86,14 @@ survive updates.
   or under Settings, then Remote Access in the app. That keeps devices at home
   connecting directly.
 
+## Getting help
+
+Once you have a tofa account, the support portal is at
+<https://accounts.tofa.tv/support>, and it is also linked from Settings inside
+the app. Diagnostics from your server attach to a ticket in one click, which is
+usually the fastest route to an answer.
+
 ## About this repository
 
 `templates/tofa.xml` is the Community Applications template for the tofa media
-server. Issues with tofa itself are best raised through the support link in the
-app; issues with the template can be raised here.
+server. Issues with the template itself can be raised here.

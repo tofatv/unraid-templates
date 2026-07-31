@@ -16,6 +16,11 @@
   <ReadMe>https://raw.githubusercontent.com/tofatv/unraid-templates/main/README.md</ReadMe>
   <Icon>https://raw.githubusercontent.com/tofatv/unraid-templates/main/icon.png</Icon>
 
+  <Screenshot>https://raw.githubusercontent.com/tofatv/unraid-templates/main/screenshots/discover-new-lists.jpg</Screenshot>
+  <Screenshot>https://raw.githubusercontent.com/tofatv/unraid-templates/main/screenshots/ops-overview.jpg</Screenshot>
+  <Screenshot>https://raw.githubusercontent.com/tofatv/unraid-templates/main/screenshots/tv-home.jpg</Screenshot>
+  <Screenshot>https://raw.githubusercontent.com/tofatv/unraid-templates/main/screenshots/web-home.jpg</Screenshot>
+
   <Overview>tofa is a media server for your movies and shows. One container runs everything, including its own database and automatic backups. Point it at your media, claim it with your tofa account, and watch on the web, Apple TV, iPhone, iPad, Android TV, and Windows.&#xD;
 &#xD;
 First start: open http://[your-server]:33333 from a device on your network and sign in to claim the server.&#xD;
