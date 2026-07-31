@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>tofa</Name>
+  <Repository>ghcr.io/tofatv/tofa:beta</Repository>
+  <Registry>https://ghcr.io/tofatv/tofa</Registry>
+  <Network>host</Network>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+
+  <!-- TODO(founder): create the forums.unraid.net support thread and paste its
+       URL here (same URL as ca_profile.xml). Project alone satisfies CA
+       validation, but a real support link is what keeps a listing healthy. -->
+  <Support>https://forums.unraid.net/topic/TODO-tofa-support/</Support>
+  <Project>https://tofa.tv/</Project>
+  <TemplateURL>https://raw.githubusercontent.com/tofatv/unraid-templates/main/templates/tofa.xml</TemplateURL>
+  <ReadMe>https://raw.githubusercontent.com/tofatv/unraid-templates/main/README.md</ReadMe>
+  <Icon>https://raw.githubusercontent.com/tofatv/unraid-templates/main/icon.png</Icon>
+
+  <Overview>tofa is a media server for your movies and shows. One container runs everything, including its own database and automatic backups. Point it at your media, claim it with your tofa account, and watch on the web, Apple TV, iPhone, iPad, Android TV, and Windows.&#xD;
+&#xD;
+First start: open http://[your-server]:33333 from a device on your network and sign in to claim the server.&#xD;
+&#xD;
+Config note: keep the app data path on a fast pool device (the default below uses /mnt/cache). tofa runs its own database in there; database files on the /mnt/user FUSE layer are slower and not recommended.&#xD;
+&#xD;
+tofa is in beta and needs a tofa account. Sign up at https://tofa.tv.</Overview>
+
+  <Category>MediaServer:Video</Category>
+  <ExtraSearchTerms>media server movies tv shows streaming transcoding plex jellyfin alternative</ExtraSearchTerms>
+  <Requires>A tofa account, from https://tofa.tv. x86-64 or ARM64 Unraid host.</Requires>
+  <License>Proprietary, free to use during beta</License>
+  <Beta>true</Beta>
+  <MinVer>6.10</MinVer>
+  <Date>2026-07-31</Date>
+  <Changes>
+### Beta
+tofa is in active beta. The `beta` tag is updated with every release; use force update on the container to pull the newest build. Release notes are published at https://tofa.tv.
+  </Changes>
+
+  <!-- Hardcoded port: [PORT:x] resolves via published port mappings, which
+       don't exist under host networking. -->
+  <WebUI>http://[IP]:33333</WebUI>
+  <!-- tini as PID 1, same as the compose file's init:true: forwards SIGTERM so
+       the embedded database shuts down cleanly, reaps transcoder zombies. -->
+  <ExtraParams>--init</ExtraParams>
+  <DonateText/>
+  <DonateLink/>
+
+  <Config Name="Config" Target="/data" Default="/mnt/cache/appdata/tofa" Mode="rw" Description="tofa's own data: database, backups, transcode cache, logs. Keep this on a pool (cache) device, not /mnt/user." Type="Path" Display="always" Required="true" Mask="false">/mnt/cache/appdata/tofa</Config>
+  <Config Name="Media" Target="/media" Default="/mnt/user/media" Mode="rw" Description="Your media library. Set Mode to Read Only if tofa should never delete files from disk." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/media</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User id tofa runs as. 99 is Unraid's nobody user, which owns appdata and shares by default." Type="Variable" Display="advanced" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Group id tofa runs as. 100 is Unraid's users group." Type="Variable" Display="advanced" Required="false" Mask="false">100</Config>
+  <Config Name="UMASK" Target="UMASK" Default="0022" Mode="" Description="File-creation mask for files tofa writes." Type="Variable" Display="advanced" Required="false" Mask="false">0022</Config>
+  <Config Name="Hardware transcoding (Intel / AMD)" Target="/dev/dri" Default="" Mode="" Description="Leave empty unless you have an Intel or AMD GPU or iGPU. Set both sides to /dev/dri to let tofa use it for hardware transcoding. NVIDIA users leave this empty and instead install the Nvidia-Driver plugin, add --runtime=nvidia to Extra Parameters, and set NVIDIA_VISIBLE_DEVICES=all plus NVIDIA_DRIVER_CAPABILITIES=compute,video,utility as variables." Type="Device" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="ADVERTISED_LAN_IP" Target="ADVERTISED_LAN_IP" Default="" Mode="" Description="Only needed if you switch the container off host networking (bridge/custom network): set it to your Unraid server's LAN IP so devices at home can connect directly. You can also set this later in the app under Settings &gt; Remote Access. With host networking (the default) tofa detects the address automatically and this can stay empty." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+</Container>
