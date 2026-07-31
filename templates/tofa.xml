@@ -34,8 +34,24 @@ tofa is in beta and needs a tofa account. Sign up at https://tofa.tv.</Overview>
   <MinVer>6.10</MinVer>
   <Date>2026-07-31</Date>
   <Changes>
-### Beta
-tofa is in active beta. The `beta` tag is updated with every release; use force update on the container to pull the newest build. Release notes are published at https://tofa.tv.
+### 2026-07-30 (0.9.25)
+- Fixed pixelated playback when converting at Original quality, especially 4K files on NVIDIA systems.
+- Discover rows can now be added to your home screen from Settings, alongside genre rows.
+- The Apple TV app can request lossless multichannel FLAC audio or Dolby Atmos when a file includes them.
+
+### 2026-07-29 (0.9.24)
+- Dolby Vision profile 7 files now play on Apple TV.
+- FillView finds the real picture inside a letterboxed file, so Zoom to Fill works on baked-in black bars.
+- Discover rebuilt, with close to thirty lists and one pair of tofa ratings everywhere.
+
+### 2026-07-25 (0.9.23)
+- Multiple profiles per account, up to 4, each with its own history, watchlist and recommendations.
+- Parental controls and kids mode, with an age rating limit the server enforces everywhere.
+- HDR titles now play in the browser without being converted first.
+
+### 2026-07-23 (0.9.22)
+- Android TV devices that cannot decode a video at full resolution now get a version scaled to what the hardware handles.
+- Safari is much smoother on big libraries.
   </Changes>
 
   <!-- Hardcoded port: [PORT:x] resolves via published port mappings, which
@@ -44,8 +60,6 @@ tofa is in active beta. The `beta` tag is updated with every release; use force 
   <!-- tini as PID 1, same as the compose file's init:true: forwards SIGTERM so
        the embedded database shuts down cleanly, reaps transcoder zombies. -->
   <ExtraParams>--init</ExtraParams>
-  <DonateText/>
-  <DonateLink/>
 
   <Config Name="Config" Target="/data" Default="/mnt/cache/appdata/tofa" Mode="rw" Description="tofa's own data: database, backups, transcode cache, logs. Keep this on a pool (cache) device, not /mnt/user." Type="Path" Display="always" Required="true" Mask="false">/mnt/cache/appdata/tofa</Config>
   <Config Name="Media" Target="/media" Default="/mnt/user/media" Mode="rw" Description="Your media library. Set Mode to Read Only if tofa should never delete files from disk." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/media</Config>
