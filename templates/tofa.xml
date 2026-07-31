@@ -7,10 +7,7 @@
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
 
-  <!-- TODO(founder): create the forums.unraid.net support thread and paste its
-       URL here (same URL as ca_profile.xml). Project alone satisfies CA
-       validation, but a real support link is what keeps a listing healthy. -->
-  <Support>https://forums.unraid.net/topic/TODO-tofa-support/</Support>
+  <Support>https://accounts.tofa.tv/support</Support>
   <Project>https://tofa.tv/</Project>
   <TemplateURL>https://raw.githubusercontent.com/tofatv/unraid-templates/main/templates/tofa.xml</TemplateURL>
   <ReadMe>https://raw.githubusercontent.com/tofatv/unraid-templates/main/README.md</ReadMe>
@@ -29,7 +26,7 @@ Config note: keep the app data path on a fast pool device (the default below use
 &#xD;
 tofa is in beta and needs a tofa account. Sign up at https://tofa.tv.</Overview>
 
-  <Category>MediaServer:Video</Category>
+  <Category>MediaApp:Video MediaServer:Video</Category>
   <ExtraSearchTerms>media server movies tv shows streaming transcoding plex jellyfin alternative</ExtraSearchTerms>
   <Requires>A tofa account, from https://tofa.tv. x86-64 or ARM64 Unraid host.</Requires>
   <License>Proprietary, free to use during beta</License>

@@ -12,8 +12,4 @@ tofa is in beta. Sign up at [tofa.tv](https://tofa.tv).
   </Profile>
   <Icon>https://raw.githubusercontent.com/tofatv/unraid-templates/main/icon.png</Icon>
   <WebPage>https://tofa.tv/</WebPage>
-  <!-- TODO(founder): create the support thread in the Docker Containers section
-       of forums.unraid.net and paste its URL here, or swap in a public Discord
-       invite via <Discord>. Keep whichever you fill in matching templates/tofa.xml. -->
-  <Forum>https://forums.unraid.net/topic/TODO-tofa-support/</Forum>
 </CommunityApplications>
