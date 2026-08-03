@@ -74,6 +74,10 @@ tofa is in beta and needs a tofa account. Sign up at https://tofa.tv.</Overview>
   <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User id tofa runs as. 99 is Unraid's nobody user, which owns appdata and shares by default." Type="Variable" Display="advanced" Required="false" Mask="false">99</Config>
   <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Group id tofa runs as. 100 is Unraid's users group." Type="Variable" Display="advanced" Required="false" Mask="false">100</Config>
   <Config Name="UMASK" Target="UMASK" Default="0022" Mode="" Description="File-creation mask for files tofa writes." Type="Variable" Display="advanced" Required="false" Mask="false">0022</Config>
-  <Config Name="Hardware transcoding (Intel / AMD)" Target="/dev/dri" Default="" Mode="" Description="Leave empty unless you have an Intel or AMD GPU or iGPU. Set both sides to /dev/dri to let tofa use it for hardware transcoding. NVIDIA users leave this empty and instead install the Nvidia-Driver plugin, add --runtime=nvidia to Extra Parameters, and set NVIDIA_VISIBLE_DEVICES=all plus NVIDIA_DRIVER_CAPABILITIES=compute,video,utility as variables." Type="Device" Display="advanced" Required="false" Mask="false"/>
+  <!-- Deliberately no Device entry for /dev/dri. An empty Type="Device" config
+       makes Unraid pass an empty device to docker, which rejects it with "bad
+       format for path", so Apply fails on every host that leaves it blank.
+       Intel/AMD users add the device themselves via "Add another Path, Port,
+       Variable, Label or Device"; the README documents both GPU paths. -->
   <Config Name="ADVERTISED_LAN_IP" Target="ADVERTISED_LAN_IP" Default="" Mode="" Description="Only needed if you switch the container off host networking (bridge/custom network): set it to your Unraid server's LAN IP so devices at home can connect directly. You can also set this later in the app under Settings &gt; Remote Access. With host networking (the default) tofa detects the address automatically and this can stay empty." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
 </Container>

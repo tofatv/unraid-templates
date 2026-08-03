@@ -53,8 +53,9 @@ and fills in artwork on its own.
 ## Hardware transcoding
 
 - **Intel or AMD, including iGPUs**: in the container settings, turn on Advanced
-  View and set the `/dev/dri` device to `/dev/dri` on both sides. Then use
-  Settings, then Transcoding, then Test hardware in the tofa web interface.
+  View, click **Add another Path, Port, Variable, Label or Device**, choose
+  **Device**, and enter `/dev/dri` as the value. Then use Settings, then
+  Transcoding, then Test hardware in the tofa web interface.
 - **NVIDIA**: install the *Nvidia Driver* plugin from Community Applications,
   set Extra Parameters to `--init --runtime=nvidia`, and add two variables:
   `NVIDIA_VISIBLE_DEVICES` = `all` and `NVIDIA_DRIVER_CAPABILITIES` =
@@ -69,6 +70,12 @@ survive updates.
 
 ## If something is off
 
+- **Apply fails with `docker: bad format for path`.** An early version of this
+  template shipped an empty Device entry for `/dev/dri`, and Unraid passes an
+  empty device straight to docker, which refuses it. Edit the container, turn on
+  Advanced View, and remove the empty Device row (or fill it in with `/dev/dri`
+  if you have an Intel or AMD GPU), then Apply. New installs no longer have the
+  row.
 - **The container stops right after starting.** Check its log from the Docker
   tab. If you see a permissions message, confirm `PUID` and `PGID` are set to
   99 and 100 and that your appdata path is a real disk path like
