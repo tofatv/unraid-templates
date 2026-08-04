@@ -74,8 +74,12 @@ survive updates.
   template shipped an empty Device entry for `/dev/dri`, and Unraid passes an
   empty device straight to docker, which refuses it. Edit the container, turn on
   Advanced View, and remove the empty Device row (or fill it in with `/dev/dri`
-  if you have an Intel or AMD GPU), then Apply. New installs no longer have the
-  row.
+  if you have an Intel or AMD GPU), then Apply. The row is gone from the
+  template here, but Community Applications serves its own cached copy and can
+  keep offering the old one for a day or two, so check for the row before you
+  click Apply. Unraid also saves your own copy of the template once you have
+  applied it, so an install that already failed keeps the row until you remove
+  it by hand.
 - **The container stops right after starting.** Check its log from the Docker
   tab. If you see a permissions message, confirm `PUID` and `PGID` are set to
   99 and 100 and that your appdata path is a real disk path like
