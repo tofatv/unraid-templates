@@ -71,6 +71,10 @@ tofa is in beta and needs a tofa account. Sign up at https://tofa.tv.</Overview>
 
   <Config Name="Config" Target="/data" Default="/mnt/cache/appdata/tofa" Mode="rw" Description="tofa's own data: database, backups, transcode cache, logs. Keep this on a pool (cache) device, not /mnt/user." Type="Path" Display="always" Required="true" Mask="false">/mnt/cache/appdata/tofa</Config>
   <Config Name="Media" Target="/media" Default="/mnt/user/media" Mode="rw" Description="Your media library. Set Mode to Read Only if tofa should never delete files from disk." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/media</Config>
+  <!-- Informational under host networking (Unraid publishes no mappings there);
+       becomes the actual published mapping if the container is switched to
+       bridge or a custom network, so setup stays reachable either way. -->
+  <Config Name="WebUI" Target="33333" Default="33333" Mode="tcp" Description="tofa's web interface port. Under host networking this is informational; on bridge or a custom network it publishes the port." Type="Port" Display="always" Required="true" Mask="false">33333</Config>
   <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User id tofa runs as. 99 is Unraid's nobody user, which owns appdata and shares by default." Type="Variable" Display="advanced" Required="false" Mask="false">99</Config>
   <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Group id tofa runs as. 100 is Unraid's users group." Type="Variable" Display="advanced" Required="false" Mask="false">100</Config>
   <Config Name="UMASK" Target="UMASK" Default="0022" Mode="" Description="File-creation mask for files tofa writes." Type="Variable" Display="advanced" Required="false" Mask="false">0022</Config>
