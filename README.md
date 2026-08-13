@@ -91,14 +91,15 @@ survive updates.
   in memory rather than on a disk, so everything tofa stores goes away on the
   next reboot. The usual cause is a pool name that is not `cache`: the default
   path `/mnt/cache/appdata/tofa` never existed, and Unraid created it on its
-  RAM-backed root. Run `ls /mnt` on the host to see your real pool names, then
-  edit the container and point Config at the right one, for example
-  `/mnt/main_cache/appdata/tofa`. Copy your existing data across first with
-  `docker cp tofa:/data/. /mnt/main_cache/appdata/tofa/` and then
-  `chown -R nobody:users /mnt/main_cache/appdata/tofa`, since a reboot or a
-  container recreate takes the RAM copy with it. Community Applications serves
-  its own cached copy of this template, so a fresh install can still offer the
-  older description for a day or two after we change it.
+  RAM-backed root. Run `ls /mnt` on the host to see your real pool names. Copy
+  your existing data across before you change anything, and stop tofa first so
+  the database is not copied mid-write: stop the container from the Docker tab,
+  then run `docker cp tofa:/data/. /mnt/main_cache/appdata/tofa/` and
+  `chown -R nobody:users /mnt/main_cache/appdata/tofa`. Then edit the container,
+  point Config at the real pool path, and start it again. Do this before the
+  next reboot, which is what takes the RAM copy with it. Community Applications
+  serves its own cached copy of this template, so a fresh install can still
+  offer the older description for a day or two after we change it.
 - **The container stops right after starting.** Check its log from the Docker
   tab. If you see a permissions message, confirm `PUID` and `PGID` are set to
   99 and 100 and that your appdata path is a real disk path like
