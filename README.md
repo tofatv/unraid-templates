@@ -18,8 +18,15 @@ you click Apply, and both are filled in for you by default:
   database in there, and databases do a lot of small writes. Paths under
   `/mnt/user` go through Unraid's share layer, which adds overhead to every one
   of those writes, even when the share lives on your cache pool. Pointing tofa
-  at the pool directly avoids that. If your pool has a different name, adjust
-  the path.
+  at the pool directly avoids that.
+
+  **Check the pool name before you click Apply.** That default assumes your
+  pool is called `cache`. If yours is called something else, change the path to
+  match it, for example `/mnt/main_cache/appdata/tofa`. Unraid does not fail on
+  a path that does not exist. It creates the folder on its RAM-backed root
+  instead, the container starts, everything looks normal, and the whole
+  database is gone the next time the server reboots. Your pool names are on the
+  Main tab.
 - **Media (`/media`) defaults to `/mnt/user/media`.** Point this at wherever
   your library lives. Set the mode to Read Only if tofa should never delete
   files from disk.
@@ -80,6 +87,18 @@ survive updates.
   click Apply. Unraid also saves your own copy of the template once you have
   applied it, so an install that already failed keeps the row until you remove
   it by hand.
+- **tofa says your data is not being saved.** The folder mapped to `/data` is
+  in memory rather than on a disk, so everything tofa stores goes away on the
+  next reboot. The usual cause is a pool name that is not `cache`: the default
+  path `/mnt/cache/appdata/tofa` never existed, and Unraid created it on its
+  RAM-backed root. Run `ls /mnt` on the host to see your real pool names, then
+  edit the container and point Config at the right one, for example
+  `/mnt/main_cache/appdata/tofa`. Copy your existing data across first with
+  `docker cp tofa:/data/. /mnt/main_cache/appdata/tofa/` and then
+  `chown -R nobody:users /mnt/main_cache/appdata/tofa`, since a reboot or a
+  container recreate takes the RAM copy with it. Community Applications serves
+  its own cached copy of this template, so a fresh install can still offer the
+  older description for a day or two after we change it.
 - **The container stops right after starting.** Check its log from the Docker
   tab. If you see a permissions message, confirm `PUID` and `PGID` are set to
   99 and 100 and that your appdata path is a real disk path like
