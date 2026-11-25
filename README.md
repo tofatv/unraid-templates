@@ -64,7 +64,7 @@ and fills in artwork on its own.
   **Device**, and enter `/dev/dri` as the value. Then use Settings, then
   Transcoding, then Test hardware in the tofa web interface.
 - **NVIDIA**: install the *Nvidia Driver* plugin from Community Applications,
-  set Extra Parameters to `--init --shm-size=512m --ulimit nofile=65536:65536 --runtime=nvidia`, and add two variables:
+  set Extra Parameters to `--init --restart=unless-stopped -e TOFA_RESTART_POLICY=unless-stopped --shm-size=512m --ulimit nofile=65536:65536 --runtime=nvidia`, and add two variables:
   `NVIDIA_VISIBLE_DEVICES` = `all` and `NVIDIA_DRIVER_CAPABILITIES` =
   `compute,video,utility`.
 
