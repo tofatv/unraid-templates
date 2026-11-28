@@ -7,7 +7,7 @@
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
 
-  <Support>https://accounts.tofa.tv/support</Support>
+  <Support>https://app.tofa.tv/support</Support>
   <Project>https://tofa.tv/</Project>
   <GitHub>https://github.com/tofatv/unraid-templates</GitHub>
   <TemplateURL>https://raw.githubusercontent.com/tofatv/unraid-templates/main/templates/tofa.xml</TemplateURL>
@@ -67,7 +67,7 @@ tofa is in beta and needs a tofa account. Sign up at https://tofa.tv.</Overview>
   <WebUI>http://[IP]:33333</WebUI>
   <!-- tini as PID 1, same as the compose file's init:true: forwards SIGTERM so
        the embedded database shuts down cleanly, reaps transcoder zombies. -->
-  <ExtraParams>--init --shm-size=512m --ulimit nofile=65536:65536</ExtraParams>
+  <ExtraParams>--init --shm-size=512m --ulimit nofile=65536:65536 --stop-timeout=30</ExtraParams>
 
   <Config Name="Config" Target="/data" Default="/mnt/cache/appdata/tofa" Mode="rw" Description="tofa's own data: database, backups, transcode cache, logs. Keep this on a pool device, not /mnt/user. The default assumes your pool is named cache. If yours has a different name, change the path to match it, for example /mnt/main_cache/appdata/tofa. A path that does not exist is created on Unraid's RAM-backed root instead of failing, and everything written there is lost when the server reboots." Type="Path" Display="always" Required="true" Mask="false">/mnt/cache/appdata/tofa</Config>
   <Config Name="Media" Target="/media" Default="/mnt/user/media" Mode="rw" Description="Your media library. Set Mode to Read Only if tofa should never delete files from disk." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/media</Config>

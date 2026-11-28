@@ -64,7 +64,7 @@ and fills in artwork on its own.
   **Device**, and enter `/dev/dri` as the value. Then use Settings, then
   Transcoding, then Test hardware in the tofa web interface.
 - **NVIDIA**: install the *Nvidia Driver* plugin from Community Applications,
-  set Extra Parameters to `--init --shm-size=512m --ulimit nofile=65536:65536 --runtime=nvidia`, and add two variables:
+  set Extra Parameters to `--init --shm-size=512m --ulimit nofile=65536:65536 --stop-timeout=30 --runtime=nvidia`, and add two variables:
   `NVIDIA_VISIBLE_DEVICES` = `all` and `NVIDIA_DRIVER_CAPABILITIES` =
   `compute,video,utility`.
 
@@ -120,7 +120,7 @@ survive updates.
 ## Getting help
 
 Once you have a tofa account, the support portal is at
-<https://accounts.tofa.tv/support>, and it is also linked from Settings inside
+<https://app.tofa.tv/support>, and it is also linked from Settings inside
 the app. Diagnostics from your server attach to a ticket in one click, which is
 usually the fastest route to an answer.
 
